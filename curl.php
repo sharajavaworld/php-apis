@@ -13,10 +13,10 @@ class curl
             $this->redisObj = new Redis();
         }       
     }
-    function openRedisConnection( $hostName, $port, $pwd) {
-        $redisObj = new Redis();          
+    function openRedisConnection( $hostName, $port, $pwd) {                
         $this->redisObj->connect( $hostName, $port );
         $this->redisObj->auth($pwd);
+        print_r($redisObj);
         return $redisObj;
     }
     function setValueWithTtl( $key, $value, $minute = 60 ){ 
