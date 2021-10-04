@@ -10,19 +10,18 @@ class curl
 
     function curl(){
         if (null == $redisObj) {
-            $redisObj = new Redis();
+            $this->redisObj = new Redis();
         }
-        print_r($redisObj);
+        print_r( $this->redisObj);
     }
-    function openRedisConnection( $hostName, $port, $pwd) { 
-        global $redisObj;     
-        $redisObj->connect( $hostName, $port );
-        $redisObj->auth($pwd);
-        return $redisObj; 
+    function openRedisConnection( $hostName, $port, $pwd) {          
+        $this->redisObj->connect( $hostName, $port );
+        $this->redisObj->->auth($pwd);
+        return $redisObj;
     }
     function setValueWithTtl( $key, $value, $minute = 60 ){ 
         try{ 
-            global $redisObj; 
+            $redisObj = $this->openRedisConnection( 'localhost', 6379, $pwd = 'redis98100'); 
           // setting the value in redis
             $redisObj->setex( $key, $ttl, $value );
         }catch( Exception $e ){ 
@@ -32,7 +31,7 @@ class curl
   
     function getValueFromKey( $key ){ 
         try{ 
-            global $redisObj; 
+            $redisObj = $this->openRedisConnection( 'localhost', 6379, $pwd = 'redis98100');;
           // getting the value from redis
             return $redisObj->get( $key);
         }catch( Exception $e ){ 
@@ -50,8 +49,8 @@ class curl
     } 
 
     function setValue($key, $url, $method = "GET") {
-        $jsonResponse = $this->_make_rest_call($url, $method);        
-        $this->openRedisConnection( 'localhost', 6379, $pwd = 'redis98100');
+        echo 'jsonResponse : '. $jsonResponse = $this->_make_rest_call($url, $method);        
+        //$connectionObj = $this->openRedisConnection( 'localhost', 6379, $pwd = 'redis98100');
         $this->setValueWithTtl( $key, $jsonResponse, 3600);
     }
 
