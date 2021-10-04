@@ -8,8 +8,8 @@ class curl
 {
     var $redisObj = null;
 
-    function curl(){
-        if (null == $redisObj) {
+    function __construct(){
+        if (null == $this->redisObj) {
             $this->redisObj = new Redis();
         }
         print_r( $this->redisObj);
