@@ -16,14 +16,14 @@ class curl
     function openRedisConnection( $hostName, $port, $pwd) {                
         $this->redisObj->connect( $hostName, $port );
         $this->redisObj->auth($pwd);
-        print_r($redisObj);
-        return $redisObj;
+        print_r($this->redisObj);
+        return $this->redisObj;
     }
     function setValueWithTtl( $key, $value, $minute = 60 ){ 
         try{ 
-            $redisObj = $this->openRedisConnection( 'localhost', 6379, $pwd = 'redis98100'); 
+            $redisObject = $this->openRedisConnection( 'localhost', 6379, $pwd = 'redis98100'); 
           // setting the value in redis
-            $redisObj->setex( $key, $minute, $value );
+            $redisObject->setex( $key, $minute, $value );
         }catch( Exception $e ){ 
             echo $e->getMessage(); 
         } 
@@ -31,18 +31,18 @@ class curl
   
     function getValueFromKey( $key ){ 
         try{ 
-            $redisObj = $this->openRedisConnection( 'localhost', 6379, $pwd = 'redis98100');;
+            $redisObject = $this->openRedisConnection( 'localhost', 6379, $pwd = 'redis98100');
           // getting the value from redis
-            return $redisObj->get( $key);
+            return $redisObject->get( $key);
         }catch( Exception $e ){ 
             echo $e->getMessage(); 
         } 
     } 
     function deleteValueFromKey( $key ){ 
         try{ 
-            global $redisObj; 
+            $redisObject = $this->openRedisConnection( 'localhost', 6379, $pwd = 'redis98100');;
           // deleting the value from redis
-            $redisObj->del( $key);
+            $redisObject->del( $key);
         }catch( Exception $e ){ 
             echo $e->getMessage(); 
         } 
