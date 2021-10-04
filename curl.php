@@ -6,7 +6,7 @@
  */
 class curl 
 {
-    $redisObj = null;
+    var $redisObj = null;
 
     function curl(){
         if (null == $redisObj) {
