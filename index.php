@@ -14,7 +14,7 @@ $redisObject->setValue(
     $method = "GET"
 );
 
-//$value = $redisObject->getValue('sharak');
-//echo '===> '. $value;
+$value = $redisObject->getValue('sharak');
+echo '===> '. $value;
 
 ?>
