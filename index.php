@@ -18,7 +18,7 @@ $redisAdapter = new redisAdapter();
 
 
 $redisAdapter->setValue(
-    'sharak', 
+    'sharak',
     $url = HOME_PAGE_INTRO,
     $method = "GET"
 );
