@@ -11,8 +11,7 @@ class curl
     function __construct(){
         if (null == $this->redisObj) {
             $this->redisObj = new Redis();
-        }
-        print_r( $this->redisObj);
+        }       
     }
     function openRedisConnection( $hostName, $port, $pwd) {
         $redisObj = new Redis();          
@@ -50,9 +49,10 @@ class curl
     } 
 
     function setValue($key, $url, $method = "GET") {
-        echo 'jsonResponse : '. $jsonResponse = $this->_make_rest_call($url, $method);        
+        //echo 'jsonResponse : '. 
+        $jsonResponse = $this->_make_rest_call($url, $method);        
         //$connectionObj = $this->openRedisConnection( 'localhost', 6379, $pwd = 'redis98100');
-        $this->setValueWithTtl( $key, $jsonResponse, 3600);
+        $this->setValueWithTtl( $key, $jsonResponse, 36000);
     }
 
     function getValue($key)
