@@ -14,9 +14,10 @@ class curl
         }
         print_r( $this->redisObj);
     }
-    function openRedisConnection( $hostName, $port, $pwd) {          
+    function openRedisConnection( $hostName, $port, $pwd) {
+        $redisObj = new Redis();          
         $this->redisObj->connect( $hostName, $port );
-        $this->redisObj->->auth($pwd);
+        $this->redisObj->auth($pwd);
         return $redisObj;
     }
     function setValueWithTtl( $key, $value, $minute = 60 ){ 
