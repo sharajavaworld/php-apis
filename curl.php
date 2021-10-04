@@ -24,7 +24,7 @@ class curl
         try{ 
             $redisObj = $this->openRedisConnection( 'localhost', 6379, $pwd = 'redis98100'); 
           // setting the value in redis
-            $redisObj->setex( $key, $ttl, $value );
+            $redisObj->setex( $key, $minute, $value );
         }catch( Exception $e ){ 
             echo $e->getMessage(); 
         } 
