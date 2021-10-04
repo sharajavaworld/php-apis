@@ -55,6 +55,11 @@ class curl
         $this->setValueWithTtl( $key, $jsonResponse, 3600);
     }
 
+    function getValue($key)
+    {
+        return $this->getValueFromKey($key);
+    }
+
     function write($key, $url, $method = "GET") {
         $redisClient = new Redis();        
         $redisClient->connect('localhost', 6379);
